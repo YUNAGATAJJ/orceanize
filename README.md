@@ -137,3 +137,9 @@ MVPリリース
 - [ x ] 外部リンク
 - [ x ] SignUp画面
 - [ x ] SignIn画面
+
+### ER図
+ Draw.io：https://drive.google.com/file/d/1ERuznY6CfGdyTzhuDkV-pXwzFLocjjqp/view?usp=sharing
+[![Image from Gyazo](https://i.gyazo.com/50317a5ba76cdcf6b70cbfbc1c492a92.png)](https://gyazo.com/50317a5ba76cdcf6b70cbfbc1c492a92)
+
+
