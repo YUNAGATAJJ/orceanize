@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "static_pages#top"
   get 'about_orceanize', to: 'static_pages#about_orceanize'
+  get 'privacy_policy', to: 'static_pages#privacy_policy'
 end
