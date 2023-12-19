@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   root "static_pages#top"
   get 'about_orceanize', to: 'static_pages#about_orceanize'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
+  get 'terms_of_use', to: 'static_pages#terms_of_use'
+
 end
