@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   get 'about_orceanize', to: 'static_pages#about_orceanize'
   get 'privacy_policy', to: 'static_pages#privacy_policy'
   get 'terms_of_use', to: 'static_pages#terms_of_use'
+  get 'external_link', to: 'static_pages#external_link'
 
 end

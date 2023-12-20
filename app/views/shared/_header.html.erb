@@ -1,10 +1,25 @@
-<header class="h-16 bg-blue-400">
-  <div>
-    <p>ロゴ</p>
-    <%= link_to('Top', root_path) %>
-    <div>
-      <p>SignIn</p>
-      <p>SignUp</p>
+<header class=" bg-blue-400 ">
+  <div class='flex justify-between'>
+
+    <div class="flex items-center">
+      <%= link_to root_path do %>
+        <%= image_tag('sublogo.png', class: 'w-10 h-10 rounded-full ml-1 mt-2') %>
+      <% end %>
+      <div>
+        <p class="text-xl text-sky-100 ml-2">Orceanize</p>
+      </div>
     </div>
+
+    <div class="flex justify-end items-center">
+      <div>
+        <p class="mr-5 md:space-x-16 text-sky-100">SignIn</p>
+      </div>
+
+      <div>
+        <p class="mr-5 items-center text-sky-100">SignUp</p>
+      </div>
+    </div>
+
+
   </div>
 </header>
