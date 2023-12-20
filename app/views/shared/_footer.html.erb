@@ -1,8 +1,11 @@
-<footer class="h-16 bg-blue-900 mt-auto">
-  <div>
-    <%= link_to 'Orceanizeについて', about_orceanize_path %>
-    <%= link_to 'プライバシーポリシー', privacy_policy_path %>
-    <%= link_to '利用規約', terms_of_use_path %>
-    <%= link_to '外部リンク', external_link_path %>
+<footer class="bg-blue-900 mt-auto">
+  <div class="flex justify-center">
+    <%= link_to 'Orceanizeについて', about_orceanize_path, class: 'text-sky-100' %>
+    <p class="mx-2 text-gray-400">|</p>
+    <%= link_to '外部リンク', external_link_path, class: 'text-sky-100' %>
+    <p class="mx-2 text-gray-400">|</p>
+    <%= link_to 'プライバシーポリシー', privacy_policy_path, class: 'text-sky-100' %>
+    <p class="mx-2 text-gray-400">|</p>
+    <%= link_to '利用規約', terms_of_use_path, class: 'text-sky-100' %>
   </div>
 </footer>
