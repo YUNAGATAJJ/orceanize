@@ -11,15 +11,7 @@
     </div>
 
     <div class="flex justify-end items-center">
-      <div>
-        <%= link_to('SignIn', login_path, class: 'mr-5 md:space-x-16 text-sky-100') %>
-      </div>
-
-      <div>
-        <%= link_to('SignUp', new_user_path, class: 'mr-5 items-center text-sky-100') %>
-      </div>
+      <%= link_to('logOut', logout_path, class: 'mr-5 items-center text-sky-100', data: { turbo_method: :delete }) %>
     </div>
-
-
   </div>
 </header>

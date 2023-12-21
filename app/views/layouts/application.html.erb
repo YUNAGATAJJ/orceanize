@@ -12,7 +12,11 @@
   </head>
 
   <body class="flex flex-col min-h-screen">
+    <% if logged_in? %>
+      <%= render 'shared/afterlogin_header' %>
+    <% else %>
       <%= render 'shared/header' %>
+    <% end %>
       <%= yield %>
       <%= render 'shared/footer' %>
   </body>

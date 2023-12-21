@@ -60,7 +60,8 @@ group :development do
   # gem "spring"
 end
 
-
 gem "tailwindcss-rails", "~> 2.0"
 
 gem 'sass-rails'
+
+gem 'sorcery', '0.16.3'

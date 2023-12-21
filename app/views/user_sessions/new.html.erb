@@ -1,0 +1,16 @@
+<div class="mx-auto md:w-2/3 w-full">
+  <div class=" col-md-10 col-lg-8 mx-auto">
+    <h1 class="font-bold text-4xl">Sign IN</h1>
+    <%= form_with url: login_path do |f| %>
+      <div class="mb-3">
+        <%= f.label :email %>
+        <%= f.email_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      </div>
+      <div class="mb-3">
+        <%= f.label :password %>
+        <%= f.password_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+      </div>
+      <%= f.submit "Sign IN", class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <% end %>
+  </div>
+</div>
