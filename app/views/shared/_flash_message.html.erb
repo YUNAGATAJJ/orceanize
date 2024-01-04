@@ -1,0 +1,11 @@
+<% flash.each do |message_type, message| %>
+  <% if message_type == "success" %>
+    <div class="text-green-500 bg-green-50">
+      <%= message %>
+    </div>
+  <% else %>
+    <div class="text-red-500 bg-red-50">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
