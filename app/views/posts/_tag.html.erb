@@ -1,0 +1,5 @@
+<p>
+  <% post.tags.each do |t| %>
+    <%= link_to t.name, posts_path(tag_name: t.name) %>
+  <% end %>
+</p>

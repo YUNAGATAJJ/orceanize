@@ -2,7 +2,12 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
   def index
-    @posts = Post.all
+    if params[:tag_name].present?
+      tag_name = params[:tag_name]
+      @posts = Post.with_tag(tag_name)
+    else
+      @posts = Post.all
+    end
   end
 
   def show
@@ -19,9 +24,17 @@ class PostsController < ApplicationController
 
   def create
     # @post = Post.new(post_params)
+    mtags = params[:post][:tag_ids].reject(&:blank?)
     @post = current_user.posts.build(post_params)
 
       if @post.save
+        if mtags
+          mtags.each do |mt|
+            post_tag = Tag.find(mt)
+            @post.tags << post_tag
+          end
+        end
+
         redirect_to post_url(@post), success: "Post was successfully created."
       else
         render :new, status: :unprocessable_entity
@@ -31,6 +44,14 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find(params[:id])
       if @post.update(post_params)
+        mtags = params[:post][:tag_ids].reject(&:blank?)
+        @post.tags.destroy_all if @post.tags
+        if mtags
+          mtags.each do |mt|
+            post_tag = Tag.find(mt)
+            @post.tags << post_tag
+          end
+        end
         redirect_to post_url(@post), success: "Post was successfully updated."
       else
         render :edit, status: :unprocessable_entity
