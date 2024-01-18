@@ -33,6 +33,10 @@ class PostImageUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [50, 50]
   # end
 
+  version :index_size do
+    process resize_and_pad: [1600, 900, '#f5ebdc', 'Center']
+  end
+
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   # def extension_allowlist
