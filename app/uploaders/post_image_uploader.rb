@@ -35,6 +35,18 @@ class PostImageUploader < CarrierWave::Uploader::Base
 
   version :index_size do
     process resize_and_pad: [1600, 900, '#ffffff', 'Center']
+    process :convert_to_webp
+  end
+
+  def convert_to_webp
+    manipulate! { |img| img.format('webp') }
+  end
+
+  def filename
+    return unless original_filename.present?
+
+    base_name = File.basename(original_filename, '.*')
+    "#{base_name}.webp"
   end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
@@ -42,6 +54,10 @@ class PostImageUploader < CarrierWave::Uploader::Base
   # def extension_allowlist
   #   %w(jpg jpeg gif png)
   # end
+
+  def extension_allowlist
+    %w[jpg jpeg gif png heic webp]
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
