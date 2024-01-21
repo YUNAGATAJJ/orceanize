@@ -35,21 +35,21 @@ class PostImageUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [50, 50]
   # end
 
-  version :index_size do
-    process resize_and_pad: [1600, 900, '#ffffff', 'Center']
-    process :convert_to_webp
-  end
+  # version :index_size do
+  #   process resize_and_pad: [1600, 900, '#ffffff', 'Center']
+  #   # process :convert_to_webp
+  # end
 
-  def convert_to_webp
-    manipulate! { |img| img.format('webp') }
-  end
+  # def convert_to_webp
+  #   manipulate! { |img| img.format('webp') }
+  # end
 
-  def filename
-    return unless original_filename.present?
+  # def filename
+  #   return unless original_filename.present?
 
-    base_name = File.basename(original_filename, '.*')
-    "#{base_name}.webp"
-  end
+  #   base_name = File.basename(original_filename, '.*')
+  #   "#{base_name}.webp"
+  # end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
