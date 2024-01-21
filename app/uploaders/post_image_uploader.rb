@@ -2,9 +2,11 @@ class PostImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
+  include Cloudinary::CarrierWave
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  # 以下コメントアウト
+  # storage :file
   # storage :fog
 
   # Override the directory where uploaded files will be stored.
@@ -33,21 +35,21 @@ class PostImageUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [50, 50]
   # end
 
-  version :index_size do
-    process resize_and_pad: [1600, 900, '#ffffff', 'Center']
-    process :convert_to_webp
-  end
+  # version :index_size do
+  #   process resize_and_pad: [1600, 900, '#ffffff', 'Center']
+  #   # process :convert_to_webp
+  # end
 
-  def convert_to_webp
-    manipulate! { |img| img.format('webp') }
-  end
+  # def convert_to_webp
+  #   manipulate! { |img| img.format('webp') }
+  # end
 
-  def filename
-    return unless original_filename.present?
+  # def filename
+  #   return unless original_filename.present?
 
-    base_name = File.basename(original_filename, '.*')
-    "#{base_name}.webp"
-  end
+  #   base_name = File.basename(original_filename, '.*')
+  #   "#{base_name}.webp"
+  # end
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:

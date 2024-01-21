@@ -11,8 +11,9 @@
 
   <p class="my-5">
     <strong class="block font-medium mb-1">Image:</strong>
-    <!-- <%= image_tag post.image.url if post.image.present? %> -->
-    <%= image_tag post.image.url(:index_size) %>
+    <%= cl_image_tag(post.image.filename, :height=>900, :width=>1600, :crop=>"scale"
+    ) %>
+
   </p>
 
   <p class="my-5">

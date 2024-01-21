@@ -28,6 +28,29 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
       if @post.save
+        # Cloudinaryでファイルをアップロードおよび加工する処理
+        uploaded_image = Cloudinary::Uploader.upload(params[:post][:image].tempfile.path,
+          transformation: [
+            {
+              overlay: "stoppollusion_lip5fa", # cloudinaryにアップロードしている画像のPublicIDを指定
+              gravity: "south_east", # 位置
+              width: 200, # 幅を指定（任意）
+              height: 200, # 高さを指定（任意）
+              y: 15, # 位置の微調整（任意）
+              x: 15 # 位置の微調整（任意）
+            }
+          ]
+        )
+
+        # アップロードしたファイルのURLを取得
+        cloudinary_url = uploaded_image["url"]
+
+        # ArticleモデルにURLを保存
+        @post.remote_image_url = cloudinary_url
+
+        # CarrierWaveのアップローダーオブジェクトを保存
+        @post.save
+
         if mtags
           mtags.each do |mt|
             post_tag = Tag.find(mt)
