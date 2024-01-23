@@ -1,7 +1,7 @@
 <%= form_with(model: user, class: "contents") do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2><%= pluralize(user.errors.count, "error") %> Sign-upに失敗しました。:</h2>
       <ul>
         <% user.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -15,8 +15,16 @@
   </div>
   <div class="my-5">
     <%= form.label :email %>
-    <%= form.text_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.text_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", id: "emailField" %>
   </div>
+
+  <div>
+
+    <h1 class="text-slate-500">※<確認用>以下のアドレスでお間違いありませんか？</h1>
+    <h1 class="text-xl text-slate-500 mb-10" id="confirmEmail"></h1>
+
+  </div>
+
   <div class="my-5">
     <%= form.label :password %>
     <%= form.password_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
@@ -26,7 +34,7 @@
     <%= form.password_field :password_confirmation, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
   <div class="inline">
-    <%= form.submit 'SignUP', class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit 'Sign-UP', class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
   </div>
   <div class="mt-3">
     <p>アカウント開設により、 <%= link_to '利用規約', terms_of_use_path, class: 'text-gray-400 border-b border-b-black' %> 、<%= link_to 'プライバシーポリシー', privacy_policy_path, class: 'text-gray-400 border-b border-b-black' %> に同意したこととなります。</p>

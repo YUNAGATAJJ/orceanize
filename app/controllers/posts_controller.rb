@@ -27,7 +27,7 @@ class PostsController < ApplicationController
     mtags = params[:post][:tag_ids].reject(&:blank?)
     @post = current_user.posts.build(post_params)
 
-      if @post.save
+      if @post.save && params[:post][:image]
         # Cloudinaryでファイルをアップロードおよび加工する処理
         uploaded_image = Cloudinary::Uploader.upload(params[:post][:image].tempfile.path,
           transformation: [
@@ -58,7 +58,7 @@ class PostsController < ApplicationController
           end
         end
 
-        redirect_to post_url(@post), success: "Post was successfully created."
+        redirect_to post_url(@post), success: "作品を登録しました。"
       else
         render :new, status: :unprocessable_entity
       end
@@ -75,7 +75,7 @@ class PostsController < ApplicationController
             @post.tags << post_tag
           end
         end
-        redirect_to post_url(@post), success: "Post was successfully updated."
+        redirect_to post_url(@post), success: "作品を更新しました。."
       else
         render :edit, status: :unprocessable_entity
       end
@@ -84,7 +84,7 @@ class PostsController < ApplicationController
   def destroy
     post = current_user.posts.find(params[:id])
     post.destroy!
-    redirect_to posts_url, success: "Post was successfully destroyed."
+    redirect_to posts_url, success: "作品を削除しました。."
 
   end
 
