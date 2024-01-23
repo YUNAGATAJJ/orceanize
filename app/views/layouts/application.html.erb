@@ -10,14 +10,18 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="flex flex-col min-h-screen">
+  <!-- <body class="flex flex-col min-h-screen"> -->
+  <body>
     <% if logged_in? %>
       <%= render 'shared/afterlogin_header' %>
     <% else %>
       <%= render 'shared/header' %>
     <% end %>
-      <%= render 'shared/flash_message' %>
+    <%= render 'shared/flash_message' %>
+    <div class="min-h-screen">
       <%= yield %>
-      <%= render 'shared/footer' %>
+    </div>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>

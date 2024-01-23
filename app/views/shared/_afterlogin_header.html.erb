@@ -11,6 +11,10 @@
     </div>
 
     <div class="flex justify-end items-center">
+      <div class="mr-5 items-center text-sky-100">
+        <%= current_user.nickname if logged_in? %>さん
+      </div>
+
       <%= link_to('logOut', logout_path, class: 'mr-5 items-center text-sky-100', data: { turbo_method: :delete }) %>
     </div>
   </div>

@@ -1,19 +1,22 @@
-<header class=" bg-blue-400 ">
+<header class="bg-blue-400 sticky top-0 z-50">
   <div class='flex justify-between'>
     <div class="flex items-center">
       <%= link_to '#' do %>
         <%= image_tag('sublogo.png', class: 'w-10 h-10 rounded-full ml-1 mt-2') %>
       <% end %>
       <div>
-        <p class="text-xl text-sky-100 ml-2">Orceanize</p>
+        <p class="md:text-2xl text-sky-100 ml-2 lg:mt-2">Orceanize</p>
       </div>
     </div>
     <div class="flex justify-end items-center">
       <div>
-        <%= link_to('SignIn', login_path, class: 'mr-5 md:space-x-16 text-sky-100') %>
+        <%= link_to('Orceanizeについて', about_orceanize_path, class: 'mr-5 md:space-x-16 text-sky-100') %>
       </div>
       <div>
-        <%= link_to('SignUp', new_user_path, class: 'mr-5 items-center text-sky-100') %>
+        <%= link_to('Sign-In', login_path, class: 'mr-5 md:space-x-16 text-sky-100') %>
+      </div>
+      <div>
+        <%= link_to('Sign-Up', new_user_path, class: 'mr-5 items-center text-sky-100') %>
       </div>
     </div>
   </div>
