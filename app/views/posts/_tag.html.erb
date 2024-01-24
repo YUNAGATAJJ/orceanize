@@ -1,5 +1,5 @@
-<p>
+<p class="text-sm">
   <% post.tags.each do |t| %>
-    <%= link_to t.name, posts_path(tag_name: t.name) %>
+    <%= link_to t.name, posts_path(tag_name: t.name), class: 'bg-teal-200 rounded-lg text-white' %>
   <% end %>
 </p>
