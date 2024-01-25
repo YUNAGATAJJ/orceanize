@@ -19,7 +19,9 @@
   <p class="my-5">
     <!-- <strong class="block font-medium mb-1">Tag:</strong> -->
     <% if post.tags.present? %>
-      <%= render 'posts/tag', post: post %>
+      <div class="mb-3">
+        <%= render 'posts/tag', post: post %>
+      </div>
     <% end %>
 </p>
 
