@@ -32,7 +32,7 @@ class PostsController < ApplicationController
         uploaded_image = Cloudinary::Uploader.upload(params[:post][:image].tempfile.path,
           transformation: [
             {
-              overlay: "stoppollusion_lip5fa", # cloudinaryにアップロードしている画像のPublicIDを指定
+              overlay: "logo_tv2rnu", # cloudinaryにアップロードしている画像のPublicIDを指定
               gravity: "south_east", # 位置
               width: 200, # 幅を指定（任意）
               height: 200, # 高さを指定（任意）
