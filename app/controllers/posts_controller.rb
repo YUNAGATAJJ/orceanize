@@ -32,7 +32,7 @@ class PostsController < ApplicationController
         uploaded_image = Cloudinary::Uploader.upload(params[:post][:image].tempfile.path,
           transformation: [
             {
-              overlay: "stoppollusion_lip5fa", # cloudinaryにアップロードしている画像のPublicIDを指定
+              overlay: "logo_tv2rnu", # cloudinaryにアップロードしている画像のPublicIDを指定
               gravity: "south_east", # 位置
               width: 200, # 幅を指定（任意）
               height: 200, # 高さを指定（任意）
@@ -58,7 +58,7 @@ class PostsController < ApplicationController
           end
         end
 
-        redirect_to post_url(@post), success: "作品を登録しました。"
+        redirect_to post_url(@post), success: "作品を登録しました"
       else
         render :new, status: :unprocessable_entity
       end
@@ -75,7 +75,7 @@ class PostsController < ApplicationController
             @post.tags << post_tag
           end
         end
-        redirect_to post_url(@post), success: "作品を更新しました。."
+        redirect_to post_url(@post), success: "作品を更新しました"
       else
         render :edit, status: :unprocessable_entity
       end
@@ -84,7 +84,7 @@ class PostsController < ApplicationController
   def destroy
     post = current_user.posts.find(params[:id])
     post.destroy!
-    redirect_to posts_url, success: "作品を削除しました。."
+    redirect_to posts_url, success: "作品を削除しました"
 
   end
 

@@ -1,7 +1,7 @@
 <%= form_with(model: user, class: "contents") do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(user.errors.count, "error") %> Sign-upに失敗しました。:</h2>
+      <h2><%= pluralize(user.errors.count, "error") %> ユーザ作成に失敗しました。:</h2>
       <ul>
         <% user.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -20,8 +20,8 @@
 
   <div>
 
-    <h1 class="text-slate-500">※<確認用>以下のアドレスでお間違いありませんか？</h1>
-    <h1 class="text-xl text-slate-500 mb-10" id="confirmEmail"></h1>
+    <h1 class="text-slate-500 text-sm">※<確認用>以下のアドレスでお間違いありませんか？</h1>
+    <h1 class="text-xl text-blue-900 text-bold text-slate-500 mb-10" id="confirmEmail"></h1>
 
   </div>
 
