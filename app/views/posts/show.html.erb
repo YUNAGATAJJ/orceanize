@@ -9,7 +9,9 @@
       <%= link_to "◀️", posts_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium mt-10 mr-2" %>
       <%= link_to "編集", edit_post_path(@post), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
       <div class="inline-block ml-2">
-        <%= button_to "削除", post_path(@post), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+        <!-- 試験的に確認フォームを導入中 -->
+        <!-- <%= button_to "削除", post_path(@post), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %> -->
+        <%= button_to '削除', post_path(@post), data: { turbo_method: :delete, turbo_confirm: '削除しますか?' }, class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium', method: :delete %>
       </div>
   <% else %>
       <%= link_to "◀️", posts_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium mt-10" %>

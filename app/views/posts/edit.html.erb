@@ -1,6 +1,11 @@
 <div class="container mx-auto md:w-2/3 w-full mt-10 p-5">
-  <div class="">
+  <div>
     <%= render "form", post: @post %>
   </div>
+  <div class="mt-5">
+    <%= cl_image_tag(@post.image.filename, :height=>900, :width=>1600, :crop=>"scale"
+    ) %>
+  </div>
+
   <%= link_to "◀️", posts_path, class: "ml-2 rounded-full py-3 px-5 bg-gray-100 inline-block font-medium mt-10" %>
 </div>
