@@ -6,4 +6,5 @@ pin "@hotwired/stimulus", to: "stimulus.min.js", preload: true
 pin "@hotwired/stimulus-loading", to: "stimulus-loading.js", preload: true
 pin "canva", to: "canva.js", preload: true
 pin "email_confirmation", to: "email_confirmation.js", preload: true
+# pin 'fontawesome', to: 'https://kit.fontawesome.com/38d256d108.js', preload: true
 pin_all_from "app/javascript/controllers", under: "controllers"
