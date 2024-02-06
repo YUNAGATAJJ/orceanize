@@ -28,8 +28,15 @@
   </div>
 
   <div class="my-5">
-    <%= form.label :'タグ' %>
-    <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name %>
+    <div class="block">
+      <i class="fa-solid fa-tags"></i>
+      <%= form.label :タグ付け %>
+    </div>
+    <!-- <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name, class: 'block px-3 py-2 mt-5 w-full' %> -->
+    <%= form.collection_check_boxes :tag_ids, Tag.all, :id, :name do |b| %>
+      <%= b.check_box(class: 'form-checkbox ml-2') %>
+      <%= b.label { b.text } %>
+    <% end %>
   </div>
 
   <div class="inline">
