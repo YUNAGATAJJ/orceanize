@@ -1,4 +1,4 @@
-<div id="<%= dom_id post %>" class="border-solid border-2 p-2 rounded-lg bg-white">
+<div id="<%= dom_id post %>" class="border-4 border-gray-200 shadow-lg p-6 bg-white">
   <p class="my-5 text-center break-words">
     <!-- <strong class="block font-medium mb-1">Title:</strong> -->
     <%= post.title %>
@@ -13,7 +13,6 @@
     <!-- <strong class="block font-medium mb-1">Image:</strong> -->
     <%= cl_image_tag(post.image.filename, :height=>900, :width=>1600, :crop=>"scale"
     ) %>
-
   </p>
 
   <p class="my-5 break-words">
@@ -22,15 +21,22 @@
       <div class="mb-2">
         <%= render 'posts/tag', post: post %>
       </div>
-
     <% end %>
-</p>
+  </p>
 
   <% if action_name != 'show' %>
-    <%= link_to "Show", post, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to post, class: "hover:text-blue-500 py-3 px-2 inline-block font-medium" do %>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    <% end %>
   <% end %>
   <% if current_user.own?(post) && action_name != 'show' %>
-    <%= link_to "Edit", edit_post_path(post), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to edit_post_path(post), class: "hover:text-blue-500 py-3 ml-2 px-2 inline-block font-medium" do %>
+    <i class="fa-solid fa-paintbrush"></i>
+    <% end %>
   <% end %>
-
+  <div class="relative">
+    <div>
+      <%= image_tag('sig.png', class: 'absolute bottom-0 right-0 w-5 h-3 md:w-10 h-6') %>
+    </div>
+  </div>
 </div>
