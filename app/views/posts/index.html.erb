@@ -1,18 +1,22 @@
 <div class="bg-blue-400 z-0">
   <canvas id="canvas" class="relative"></canvas>
-  <div>
-      <% if notice.present? %>
-        <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
-          <%= notice %>
-        </p>
-      <% end %>
-    <div class="absolute top-20 right-10">
-      <%= link_to "+", new_post_path, class: "text-3xl rounded-full py-3 px-5 bg-blue-600 text-white font-medium mb-10" %>
+  <!-- 投稿作成ボタン -->
+  <div class="absolute top-20 right-10">
+    <%= link_to "+", new_post_path, class: "text-3xl rounded-full py-3 px-5 bg-blue-600 text-white font-medium mb-10" %>
+  </div>
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
+      <%= notice %>
+    </p>
+  <% end %>
+  <div class="min-h-screen container mx-auto p-5">
+    <!-- 検索機能 -->
+    <div class="flex justify-center">
+      <%= render 'search_form', q: @q, url: posts_path %>
+    </div>
+    <!-- 投稿一覧のレンダリング -->
+    <div id="articles" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 mb-10">
+      <%= render @posts %>
     </div>
   </div>
-    <div class="min-h-screen container mx-auto p-5">
-      <div id="articles" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-5 mb-10">
-        <%= render @posts %>
-      </div>
-    </div>
-  </div>
+</div>

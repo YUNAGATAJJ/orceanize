@@ -1,12 +1,22 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy ]
 
+  # def index
+  #   if params[:tag_name].present?
+  #     tag_name = params[:tag_name]
+  #     @posts = Post.with_tag(tag_name)
+  #   else
+  #     @posts = Post.all
+  #   end
+  # end
+
   def index
+  @q = Post.ransack(params[:q])
     if params[:tag_name].present?
       tag_name = params[:tag_name]
-      @posts = Post.with_tag(tag_name)
+      @posts = Post.with_tag(tag_name).ransack(params[:q]).result(distinct: true)
     else
-      @posts = Post.all
+      @posts = @q.result(distinct: true).order(created_at: :desc)
     end
   end
 
