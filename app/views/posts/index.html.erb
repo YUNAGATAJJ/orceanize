@@ -1,9 +1,11 @@
 <div class="bg-blue-400 z-0">
   <canvas id="canvas" class="relative"></canvas>
   <!-- 投稿作成ボタン -->
-  <div class="absolute top-20 right-10">
-    <%= link_to "+", new_post_path, class: "text-3xl rounded-full py-3 px-5 bg-blue-600 text-white font-medium mb-10" %>
-  </div>
+  <% if logged_in? %>
+    <div class="absolute top-20 right-10">
+      <%= link_to "+", new_post_path, class: "text-3xl rounded-full py-3 px-5 bg-blue-600 text-white font-medium mb-10" %>
+    </div>
+  <% end %>
   <% if notice.present? %>
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice">
       <%= notice %>
