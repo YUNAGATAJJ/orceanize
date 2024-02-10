@@ -1,8 +1,9 @@
 <header class="bg-blue-400 sticky top-0 z-50">
   <div class='flex justify-between'>
-    <div class="flex items-center">
+    <div class="flex items-center group relative">
       <%= link_to root_path do %>
         <%= image_tag('logo.png', class: 'w-10 h-10 rounded-full ml-1 mt-1 mb-1') %>
+        <div class="absolute top-full rounded-md w-auto p-2 bg-white text-black text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden group-hover:block">TOP</div>
       <% end %>
       <div>
         <p class="text-sm md:text-xl text-sky-100 ml-2">Orceanize</p>
@@ -10,15 +11,22 @@
     </div>
     <div class="flex justify-end items-center">
       <div>
-        <%= link_to('Orceanizeとは', about_orceanize_path, class: 'text-sm md:text-xl mr-5 md:space-x-16 text-sky-100') %>
+        <%= link_to('Orceanizeとは', about_orceanize_path, class: 'text-xs md:text-base mr-5 md:space-x-16 text-sky-100') %>
+      </div>
+      <!-- ログイン前gallarypath -->
+      <div class="text-xs md:text-base mr-5 items-center text-sky-100 group relative">
+        <%= link_to posts_path do %>
+          <i class="fa-solid fa-brush"></i> Gallery
+          <div class="absolute top-full rounded-md mt-1 w-48 p-2 bg-white text-black text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden group-hover:block">みんなの作品を見てみよう</div>
+        <% end %>
       </div>
       <div>
-        <%= link_to login_path, class: 'text-sm md:text-xl mr-5 md:space-x-16 text-sky-100' do %>
+        <%= link_to login_path, class: 'text-xs md:text-base mr-5 md:space-x-16 text-sky-100' do %>
           <i class="fa-solid fa-right-to-bracket"></i> Sign-In
         <% end %>
       </div>
       <div>
-        <%= link_to new_user_path, class: 'text-sm md:text-xl mr-5 items-center text-sky-100' do %>
+        <%= link_to new_user_path, class: 'text-xs md:text-base mr-5 items-center text-sky-100' do %>
           <i class="fa-solid fa-user-plus"></i> Sign-Up
         <% end %>
       </div>
