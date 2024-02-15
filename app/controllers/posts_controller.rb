@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
-  skip_before_action :require_login, only: %i[index show]
+  skip_before_action :require_login, only: %i[index show search]
 
   def index
     @q = Post.ransack(params[:q])
@@ -82,6 +82,13 @@ class PostsController < ApplicationController
     post = current_user.posts.find(params[:id])
     post.destroy!
     redirect_to posts_url, success: "作品を削除しました"
+  end
+
+  def search
+    @sealivings = Sealiving.where("name like ?", "%#{params[:q].tr('ぁ-ん', 'ァ-ン')}%")
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
