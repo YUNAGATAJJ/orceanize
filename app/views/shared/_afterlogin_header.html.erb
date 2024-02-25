@@ -4,7 +4,7 @@
     <div class="flex items-center group relative">
       <%= link_to root_path do %>
         <%= image_tag('logo.png', class: 'w-10 h-10 rounded-full ml-1 mt-1 mb-1') %>
-        <div class="absolute top-full rounded-md w-auto p-2 bg-white text-black text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden group-hover:block">TOP</div>
+        <!-- <div class="absolute top-full rounded-md w-auto p-2 bg-white text-black text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden group-hover:block">TOP</div> -->
       <% end %>
       <div>
         <p class="text-xl text-sky-100 ml-2">Orceanize</p>
@@ -15,7 +15,7 @@
       <div class="mr-5 items-center text-sky-100 group relative">
         <%= link_to logged_in? ? posts_path : root_path do %>
           <i class="fa-solid fa-brush"></i> Gallery
-          <div class="absolute top-full rounded-md mt-3 w-48 p-2 bg-white text-black text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden group-hover:block">みんなの作品を見てみよう</div>
+          <!-- <div class="absolute top-full rounded-md mt-3 w-48 p-2 bg-white text-black text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden group-hover:block">みんなの作品を見てみよう</div> -->
         <% end %>
       </div>
 
