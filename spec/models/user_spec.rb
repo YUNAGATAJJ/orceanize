@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'emailが被らない場合にvalidになるか' do
-    user = create(:user)
+    create(:user)
     user_with_another_email = build(:user, email: 'another_email')
     expect(user_with_another_email).to be_valid
     expect(user_with_another_email.errors[:email]).to be_empty
