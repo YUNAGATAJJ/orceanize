@@ -1,4 +1,11 @@
 <div id="<%= dom_id post %>" class="border-4 border-gray-200 shadow-lg p-6 bg-white">
+  <div class="flex items-center">
+    <%= image_tag post.user.avatar.url, class: "h-12 w-12 object-cover rounded-full mr-4" %>
+    <div>
+      <%= post.user.nickname %>
+    </div>
+  </div>
+
   <p class="my-5 text-center break-words">
     <!-- <strong class="block font-medium mb-1">Title:</strong> -->
     <%= post.title %>
