@@ -5,6 +5,7 @@
     <% end %>
   </div>
   <%= link_to '編集', edit_profile_path, class: "mb-5  rounded-lg py-2 px-4 bg-teal-200 text-teal-900 inline-block font-medium hover:bg-teal-300 transition-colors" %>
+  <%= link_to 'マイリスト', bookmarks_posts_path, class: "mb-5  rounded-lg py-2 px-4 bg-teal-200 text-teal-900 inline-block font-medium hover:bg-teal-300 transition-colors" %>
   <div class="mb-5">
     <p class="font-semibold">Nickname</p>
     <p class="bg-white text-blue-400 p-2 rounded-lg"><%= current_user.nickname %></p>

@@ -1,0 +1,8 @@
+<% if @bookmark_boards.present? %>
+  <div id="articles" class="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-5 ">
+    <%= render @bookmark_boards %>
+  </div>
+<% else %>
+  <p class="text-center text-gray-500 py-10">まだブックマークはありません</p>
+<% end %>
+

@@ -31,17 +31,27 @@
       <% end %>
     </p>
   <% end %>
-  <% if action_name != 'show' %>
-    <%= link_to post, class: "hover:text-blue-500 py-3 px-2 inline-block font-medium" do %>
-      <i class="fa-solid fa-magnifying-glass"></i>
-    <% end %>
-  <% end %>
-  <% if logged_in? && current_user.own?(post) && action_name != 'show' %>
-    <%= link_to edit_post_path(post), class: "hover:text-blue-500 py-3 ml-2 px-2 inline-block font-medium" do %>
-    <i class="fa-solid fa-paintbrush"></i>
-    <% end %>
-  <% end %>
-  <div class="relative">
+  <div class="flex justify-between items-center">
+    <div>
+      <% if action_name != 'show' %>
+        <%= link_to post, class: "hover:text-blue-500 py-3 px-2 inline-block font-medium" do %>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        <% end %>
+      <% end %>
+
+      <% if logged_in? && current_user.own?(post) && action_name != 'show' %>
+        <%= link_to edit_post_path(post), class: "hover:text-blue-500 py-3 ml-2 px-2 inline-block font-medium" do %>
+          <i class="fa-solid fa-paintbrush"></i>
+        <% end %>
+      <% end %>
+    </div>
+
+    <!-- ブックマーク -->
+    <div>
+      <%= render 'bookmark_buttons', { post: post } %>
+    </div>
+  </div>
+  <div class="relative mt-5">
     <div>
       <%= image_tag('sig.png', class: 'absolute bottom-0 right-0 w-5 h-3 md:w-10 h-6') %>
     </div>
