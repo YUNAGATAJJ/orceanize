@@ -28,7 +28,8 @@
       </div>
 
       <div>
-        <%= image_tag current_user.avatar.url, class: "mt-10 mx-auto h-32 w-32 object-cover rounded-full" %>
+        <!-- <%= image_tag current_user.avatar.url, class: "mt-10 mx-auto h-32 w-32 object-cover rounded-full" %> -->
+        <%= cl_image_tag(current_user.avatar.filename, height: 140, width: 140, crop: "scale", class: "mt-10 mx-auto rounded-full object-cover") %>
       </div>
 
       <%= f.submit "更新", class: "rounded-lg py-2 px-4 bg-teal-200 text-teal-900 font-medium hover:bg-teal-300 transition-colors" %>
