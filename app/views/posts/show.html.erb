@@ -15,6 +15,12 @@
           <i class="fa-solid fa-trash-can"></i>
         <% end %>
       </div>
+      <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=【#{@post.title}をOrceanizeに投稿しました】%0a%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア",class: "mt-2 py-3 px-5 inline-block font-medium hover:text-blue-500" do %>
+        <div class="flex items-center">
+          <i class="fa-brands fa-x-twitter"></i>
+          <p class="italic ml-1">Share</p>
+        </div>
+      <% end %>
   <% else %>
       <%= link_to "◀️", posts_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium mt-10" %>
   <% end %>
