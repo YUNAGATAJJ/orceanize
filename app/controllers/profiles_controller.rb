@@ -6,8 +6,22 @@ class ProfilesController < ApplicationController
 
   def edit; end
 
+  # def update
+  #   if @user.update(profile_params)
+  #     redirect_to profile_path, success: "ユーザ情報が更新されました"
+  #   else
+  #     render :edit, status: :unprocessable_entity
+  #   end
+  # end
   def update
     if @user.update(profile_params)
+      if params[:user][:avatar]
+        uploaded_image = Cloudinary::Uploader.upload(params[:user][:avatar].tempfile.path)
+        cloudinary_url = uploaded_image["url"]
+
+        @user.remote_avatar_url = cloudinary_url
+        @user.save # ここでモデルを保存
+      end
       redirect_to profile_path, success: "ユーザ情報が更新されました"
     else
       render :edit, status: :unprocessable_entity
