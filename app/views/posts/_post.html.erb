@@ -12,9 +12,11 @@
       <%= post.title %>
     </p>
     <hr class="mt-6">
-    <!-- <p class="text-sm my-5 break-words">
+    <% if action_name == 'show' %>
+    <p class="text-sm my-5 break-words">
       <%= post.description %>
-    </p> -->
+    </p>
+    <% end %>
 
     <p class="my-5">
       <!-- <strong class="block font-medium mb-1">Image:</strong> -->
