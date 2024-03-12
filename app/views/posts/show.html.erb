@@ -5,7 +5,8 @@
                     og: {
                       title: @post.title,
                       description: @post.description,
-                      url: request.original_url,
+                      # url: request.original_url,
+                      url: 'https://www.orceanize.com/',
                       image: @post.image_url
                         },
                     twitter: {
@@ -35,7 +36,8 @@
           <i class="fa-solid fa-trash-can"></i>
         <% end %>
       </div>
-      <%= link_to "https://twitter.com/share?url=#{post_url(@post)}&text=【#{@post.title}をOrceanizeに投稿しました】%0a%0a", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア",class: "mt-2 py-3 px-5 inline-block font-medium hover:text-blue-500" do %>
+
+      <%= link_to "https://twitter.com/share?url=https://www.orceanize.com/%0a%0a&text=【#{@post.title}をOrceanizeに公開しました!】&hashtags=Orceanize,海ごみ公開プラットフォーム", target: '_blank', data: { toggle: "tooltip", placement: "bottom" }, title: "Xでシェア", class: "mt-2 py-3 px-5 inline-block font-medium hover:text-blue-500" do %>
         <div class="flex items-center">
           <i class="fa-brands fa-x-twitter"></i>
           <p class="italic ml-1">Share</p>
