@@ -7,14 +7,16 @@ module ApplicationHelper
       charset: 'utf-8',
       description: '自分だけの海ごみアートを、世界に向けて公開することができるプラットフォームです。',
       keywords: '海ごみ,海洋汚染,海ごみアート',
-      canonical: request.original_url,
+      # canonical: request.original_url,
+      canonical: 'https://www.orceanize.com/',
       separator: '|',
       og: {
         site_name: :site,
         title: :title,
         description: :description,
         type: 'website',
-        url: request.original_url,
+        # url: request.original_url,
+        url: 'https://www.orceanize.com/',
         image: image_url('ogp.png'), # 配置するパスやファイル名によって変更すること
         local: 'ja-JP'
       },
