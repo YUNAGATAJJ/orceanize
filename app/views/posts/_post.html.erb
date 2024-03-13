@@ -51,7 +51,9 @@
 
     <!-- ブックマーク -->
     <div>
-      <%= render 'bookmark_buttons', { post: post } %>
+      <% if logged_in? %>
+        <%= render 'bookmark_buttons', { post: post } %>
+      <% end %>
     </div>
   </div>
   <div class="relative mt-5">
