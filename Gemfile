@@ -60,10 +60,18 @@ gem "font-awesome-sass"
 
 gem 'ransack'
 
+gem 'kaminari'
+
+gem 'bootstrap5-kaminari-views'
+
+gem "meta-tags"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  # gem "debug", platforms: %i[ mri windows ]
-  gem 'debug', '1.9.1'
+  gem "debug", platforms: %i[ mri windows ]
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do

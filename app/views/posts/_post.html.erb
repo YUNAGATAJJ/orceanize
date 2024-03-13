@@ -1,40 +1,60 @@
 <div id="<%= dom_id post %>" class="border-4 border-gray-200 shadow-lg p-6 bg-white">
-  <p class="my-5 text-center break-words">
-    <!-- <strong class="block font-medium mb-1">Title:</strong> -->
-    <%= post.title %>
-  </p>
-  <hr class="mt-6">
-  <p class="text-sm my-5 break-words">
-    <!-- <strong class="block font-medium mb-1">Description:</strong> -->
-    <%= post.description %>
-  </p>
-
-  <p class="my-5">
-    <!-- <strong class="block font-medium mb-1">Image:</strong> -->
-    <%= cl_image_tag(post.image.filename, :height=>900, :width=>1600, :crop=>"scale"
+  <div class="flex items-center">
+    <%= cl_image_tag(post.user.avatar.filename, :crop=>"scale", class: "h-12 w-12 object-cover rounded-full mr-4"
     ) %>
-  </p>
+    <div>
+      <%= post.user.nickname %>
+    </div>
+  </div>
 
-  <p class="my-5 break-words">
-    <!-- <strong class="block font-medium mb-1">Tag:</strong> -->
-    <% if post.tags.present? %>
-      <div class="mb-2">
-        <%= render 'posts/tag', post: post %>
-      </div>
+  <%= link_to post_path(post) do %>
+    <p class="my-5 text-center break-words">
+      <!-- <strong class="block font-medium mb-1">Title:</strong> -->
+      <%= post.title %>
+    </p>
+    <hr class="mt-6">
+    <% if action_name == 'show' %>
+    <p class="text-sm my-5 break-words">
+      <%= post.description %>
+    </p>
     <% end %>
-  </p>
 
-  <% if action_name != 'show' %>
-    <%= link_to post, class: "hover:text-blue-500 py-3 px-2 inline-block font-medium" do %>
-      <i class="fa-solid fa-magnifying-glass"></i>
-    <% end %>
+    <p class="my-5">
+      <!-- <strong class="block font-medium mb-1">Image:</strong> -->
+      <%= cl_image_tag(post.image.filename, :height=>900, :width=>1600, :crop=>"scale"
+      ) %>
+    </p>
+
+    <p class="my-5 break-words">
+      <!-- <strong class="block font-medium mb-1">Tag:</strong> -->
+      <% if post.tags.present? %>
+        <div class="mb-2">
+          <%= render 'posts/tag', post: post %>
+        </div>
+      <% end %>
+    </p>
   <% end %>
-  <% if logged_in? && current_user.own?(post) && action_name != 'show' %>
-    <%= link_to edit_post_path(post), class: "hover:text-blue-500 py-3 ml-2 px-2 inline-block font-medium" do %>
-    <i class="fa-solid fa-paintbrush"></i>
-    <% end %>
-  <% end %>
-  <div class="relative">
+  <div class="flex justify-between items-center">
+    <div>
+      <% if action_name != 'show' %>
+        <%= link_to post, class: "hover:text-blue-500 py-3 px-2 inline-block font-medium" do %>
+          <i class="fa-solid fa-magnifying-glass"></i>
+        <% end %>
+      <% end %>
+
+      <% if logged_in? && current_user.own?(post) && action_name != 'show' %>
+        <%= link_to edit_post_path(post), class: "hover:text-blue-500 py-3 ml-2 px-2 inline-block font-medium" do %>
+          <i class="fa-solid fa-paintbrush"></i>
+        <% end %>
+      <% end %>
+    </div>
+
+    <!-- ブックマーク -->
+    <div>
+      <%= render 'bookmark_buttons', { post: post } %>
+    </div>
+  </div>
+  <div class="relative mt-5">
     <div>
       <%= image_tag('sig.png', class: 'absolute bottom-0 right-0 w-5 h-3 md:w-10 h-6') %>
     </div>

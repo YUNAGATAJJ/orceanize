@@ -2,13 +2,17 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   skip_before_action :require_login, only: %i[index show search]
 
+  def bookmarks
+    @bookmark_boards = current_user.bookmark_posts.includes(:user).order(created_at: :desc)
+  end
+
   def index
     @q = Post.ransack(params[:q])
     if params[:tag_name].present?
       tag_name = params[:tag_name]
-      @posts = Post.with_tag(tag_name).ransack(params[:q]).result(distinct: true)
+      @posts = Post.with_tag(tag_name).ransack(params[:q]).result(distinct: true).page(params[:page])
     else
-      @posts = @q.result(distinct: true).order(created_at: :desc)
+      @posts = @q.result(distinct: true).order(created_at: :desc).page(params[:page])
     end
   end
 
