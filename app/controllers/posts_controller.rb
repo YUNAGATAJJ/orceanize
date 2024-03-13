@@ -89,7 +89,12 @@ class PostsController < ApplicationController
   end
 
   def search
-    @sealivings = Sealiving.where("name like ?", "%#{params[:q].tr('ぁ-ん', 'ァ-ン')}%")
+    query = params[:q].tr('ぁ-ん', 'ァ-ン')
+    @sealivings = Sealiving.where("name LIKE ?", "%#{query}%")
+    @filtered_sealivings = @sealivings.select do |sealiving|
+      Post.ransack(title_or_description_cont: sealiving.name).result.exists?
+    end
+
     respond_to do |format|
       format.js
     end
