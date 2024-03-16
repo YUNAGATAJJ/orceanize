@@ -1,3 +1,4 @@
+# tagsテーブル作成
 class CreateTags < ActiveRecord::Migration[7.1]
   def change
     create_table :tags do |t|

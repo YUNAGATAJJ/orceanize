@@ -1,3 +1,4 @@
+# sealivingsテーブル作成
 class CreateSealivings < ActiveRecord::Migration[7.1]
   def change
     create_table :sealivings do |t|

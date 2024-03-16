@@ -1,3 +1,4 @@
+# seachアクションで、アートコンプリートの対象を、Sealivingモデルのname属性への検索結果が存在した時のみに限定する
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
   skip_before_action :require_login, only: %i[index show search]
@@ -38,8 +39,8 @@ class PostsController < ApplicationController
       uploaded_image = Cloudinary::Uploader.upload(params[:post][:image].tempfile.path,
                                                    transformation: [
                                                      {
-                                                       overlay: "logo_tv2rnu", # cloudinaryにアップロードしている画像のPublicIDを指定
-                                                       gravity: "south_east", # 位置
+                                                       overlay: 'logo_tv2rnu', # cloudinaryにアップロードしている画像のPublicIDを指定
+                                                       gravity: 'south_east', # 位置
                                                        width: 200, # 幅を指定（任意）
                                                        height: 200, # 高さを指定（任意）
                                                        y: 15, # 位置の微調整（任意）
@@ -48,7 +49,7 @@ class PostsController < ApplicationController
                                                    ])
 
       # アップロードしたファイルのURLを取得
-      cloudinary_url = uploaded_image["url"]
+      cloudinary_url = uploaded_image['url']
 
       # ArticleモデルにURLを保存
       @post.remote_image_url = cloudinary_url
@@ -61,7 +62,7 @@ class PostsController < ApplicationController
         @post.tags << post_tag
       end
 
-      redirect_to post_url(@post), success: "作品を登録しました"
+      redirect_to post_url(@post), success: '作品を登録しました'
     else
       render :new, status: :unprocessable_entity
     end
@@ -76,7 +77,7 @@ class PostsController < ApplicationController
         post_tag = Tag.find(mt)
         @post.tags << post_tag
       end
-      redirect_to post_url(@post), success: "作品を更新しました"
+      redirect_to post_url(@post), success: '作品を更新しました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -85,12 +86,12 @@ class PostsController < ApplicationController
   def destroy
     post = current_user.posts.find(params[:id])
     post.destroy!
-    redirect_to posts_url, success: "作品を削除しました"
+    redirect_to posts_url, success: '作品を削除しました'
   end
 
   def search
     query = params[:q].tr('ぁ-ん', 'ァ-ン')
-    @sealivings = Sealiving.where("name LIKE ?", "%#{query}%")
+    @sealivings = Sealiving.where('name LIKE ?', "%#{query}%")
     @filtered_sealivings = @sealivings.select do |sealiving|
       Post.ransack(title_or_description_cont: sealiving.name).result.exists?
     end

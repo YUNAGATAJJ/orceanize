@@ -1,3 +1,4 @@
+# ポストの作成者か判別するown?メソッドと、ブックマークしているか判別するbookmark?メソッドを持つ
 class User < ApplicationRecord
   authenticates_with_sorcery!
   mount_uploader :avatar, AvatarUploader
