@@ -36,3 +36,7 @@ Style/StringLiterals:
 Style/SymbolArray:
   Exclude:
   - config/initializers/filter_parameter_logging.rb
+
+Style/SingleArgumentDig:
+  Exclude:
+  - config/initializers/cloudinary.rb
