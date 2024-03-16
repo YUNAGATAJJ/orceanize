@@ -1,6 +1,7 @@
+# ユーザCRUD用
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  skip_before_action :require_login, only: [:new, :create, :update, :destroy]
+  skip_before_action :require_login, only: %i[new create update destroy]
 
   def show; end
 
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_url(@user), success: "ユーザ情報が更新されました"
+      redirect_to user_url(@user), success: 'ユーザ情報が更新されました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy!
-    redirect_to users_url, success: "ユーザを削除しました."
+    redirect_to users_url, success: 'ユーザを削除しました'
     format.json { head :no_content }
   end
 

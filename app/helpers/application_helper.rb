@@ -1,3 +1,4 @@
+# OGP設定用
 module ApplicationHelper
   def default_meta_tags
     {

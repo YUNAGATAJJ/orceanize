@@ -1,4 +1,5 @@
-cloudinary_credentials = Rails.application.credentials.dig(:cloudinary)
+# cloudinary_credentials = Rails.application.credentials.dig(:cloudinary)
+Rails.application.credentials[:cloudinary]
 
 Cloudinary.config do |config|
   config.cloud_name = cloudinary_credentials[:cloud_name]

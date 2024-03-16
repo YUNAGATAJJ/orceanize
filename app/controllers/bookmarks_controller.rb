@@ -1,3 +1,4 @@
+# /posts/bookmarksからdestroyアクションを踏んでもposts_pathまでしかリダイレクトしないような動線
 class BookmarksController < ApplicationController
   def create
     post = Post.find(params[:post_id])
@@ -10,7 +11,7 @@ class BookmarksController < ApplicationController
     current_user.bookmark_posts.destroy(post)
 
     # リクエストが/posts/bookmarksから来たかどうかをチェック
-    if request.referer.include?("/posts/bookmarks")
+    if request.referer.include?('/posts/bookmarks')
       redirect_to bookmarks_posts_path, success: 'マイリストから削除しました'
     else
       redirect_to posts_path, success: 'マイリストから削除しました'
