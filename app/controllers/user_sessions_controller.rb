@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ログイン・ログアウト用
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create]

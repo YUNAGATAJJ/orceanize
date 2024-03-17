@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # postTagsテーブル作成
 class CreatePostTags < ActiveRecord::Migration[7.1]
   def change

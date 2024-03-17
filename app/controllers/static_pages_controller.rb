@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # 静的ページ表示用
 class StaticPagesController < ApplicationController
   skip_before_action :require_login

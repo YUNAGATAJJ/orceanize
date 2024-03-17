@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # cloudinary_credentials = Rails.application.credentials.dig(:cloudinary)
 cloudinary_credentials = Rails.application.credentials.dig(:cloudinary)
 

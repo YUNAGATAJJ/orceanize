@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 # プロフィール管理用
 class ProfilesController < ApplicationController
+  include CloudinarySettings
   before_action :set_user, only: %i[edit update]
   skip_before_action :require_login
 
@@ -8,14 +11,8 @@ class ProfilesController < ApplicationController
   def edit; end
 
   def update
-    if @user.update(profile_params)
-      if params[:user][:avatar]
-        uploaded_image = Cloudinary::Uploader.upload(params[:user][:avatar].tempfile.path)
-        cloudinary_url = uploaded_image['url']
-
-        @user.remote_avatar_url = cloudinary_url
-        @user.save
-      end
+    if @user.update(profile_params) && params[:user][:avatar]
+      upload_avatarimage_to_cloudinary
       redirect_to profile_path, success: 'ユーザ情報が更新されました'
     else
       render :edit, status: :unprocessable_entity

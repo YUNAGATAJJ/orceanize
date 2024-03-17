@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # プロフィール画像用アップローダー
 class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:

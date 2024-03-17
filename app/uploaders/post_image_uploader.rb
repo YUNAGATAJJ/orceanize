@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # ポストの画像アップローダー
 class PostImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:

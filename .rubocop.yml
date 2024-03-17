@@ -5,32 +5,29 @@ AllCops:
   SuggestExtensions: false
   # 最新のルールを適用する
   NewCops: enable
-  # 何のルールに引っかかったか表示する
+  # 感知したルール詳細を表示する
   DisplayCopNames: true
   Exclude:
     - "Gemfile"
     - "bin/**/*"
     - "config/environments/*"
     - "config/puma.rb"
-    - "spec/spec_helper.rb"
+    - "spec/**/*"
     - "db/schema.rb"
 
 ### ルールのカスタマイズ
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - 'app/helpers/application_helper.rb'
 
-# 設定が厳しいので一旦全てfalseにする
-# Metrics:
-#   Enabled: false
-
-# 文字列のfreeze
-Style/FrozenStringLiteralComment:
-  Enabled: false
 
 # 文字列のダブルクォートチェック
 Style/StringLiterals:
   Exclude:
-  - "Rakefile"
-  - "app/mailers/application_mailer.rb"
-  - "config/boot.rb"
+  - 'Rakefile'
+  - 'app/mailers/application_mailer.rb'
+  - 'config/boot.rb'
 
 # シンボルによる配列の%記法のチェック
 Style/SymbolArray:
