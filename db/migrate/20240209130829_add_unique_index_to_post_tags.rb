@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # postTagsテーブルにindexを作成
 class AddUniqueIndexToPostTags < ActiveRecord::Migration[7.1]
   def change

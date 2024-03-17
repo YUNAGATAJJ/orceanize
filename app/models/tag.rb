@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # 中間テーブルpost_tagsを経由しpostsと繋がっている
 class Tag < ApplicationRecord
   has_many :post_tags, dependent: :destroy

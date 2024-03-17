@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # タグによる絞り込み機能の追加
 class Post < ApplicationRecord
   mount_uploader :image, PostImageUploader

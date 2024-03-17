@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # /posts/bookmarksからdestroyアクションを踏んでもposts_pathまでしかリダイレクトしないような動線
 class BookmarksController < ApplicationController
   def create

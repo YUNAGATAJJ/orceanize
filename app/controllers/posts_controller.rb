@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 # seachアクションで、アートコンプリートの対象を、Sealivingモデルのname属性への検索結果が存在した時のみに限定する
 class PostsController < ApplicationController
+  include CloudinarySettings
   before_action :set_post, only: %i[show edit update destroy]
   skip_before_action :require_login, only: %i[index show search]
 
@@ -9,12 +12,7 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    if params[:tag_name].present?
-      tag_name = params[:tag_name]
-      @posts = Post.with_tag(tag_name).ransack(params[:q]).result(distinct: true).page(params[:page])
-    else
-      @posts = @q.result(distinct: true).order(created_at: :desc).page(params[:page])
-    end
+    filter_post_by_tag
   end
 
   def show
@@ -30,38 +28,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    # @post = Post.new(post_params)
-    mtags = params[:post][:tag_ids].compact_blank
     @post = current_user.posts.build(post_params)
-
-    if @post.save && params[:post][:image]
-      # Cloudinaryでファイルをアップロードおよび加工する処理
-      uploaded_image = Cloudinary::Uploader.upload(params[:post][:image].tempfile.path,
-                                                   transformation: [
-                                                     {
-                                                       overlay: 'logo_tv2rnu', # cloudinaryにアップロードしている画像のPublicIDを指定
-                                                       gravity: 'south_east', # 位置
-                                                       width: 200, # 幅を指定（任意）
-                                                       height: 200, # 高さを指定（任意）
-                                                       y: 15, # 位置の微調整（任意）
-                                                       x: 15 # 位置の微調整（任意）
-                                                     }
-                                                   ])
-
-      # アップロードしたファイルのURLを取得
-      cloudinary_url = uploaded_image['url']
-
-      # ArticleモデルにURLを保存
-      @post.remote_image_url = cloudinary_url
-
-      # CarrierWaveのアップローダーオブジェクトを保存
-      @post.save
-
-      mtags&.each do |mt|
-        post_tag = Tag.find(mt)
-        @post.tags << post_tag
-      end
-
+    if @post.save
+      handle_image_upload if params[:post][:image]
       redirect_to post_url(@post), success: '作品を登録しました'
     else
       render :new, status: :unprocessable_entity
@@ -71,12 +40,7 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
-      mtags = params[:post][:tag_ids].compact_blank
-      @post.tags&.destroy_all
-      mtags&.each do |mt|
-        post_tag = Tag.find(mt)
-        @post.tags << post_tag
-      end
+      update_tags
       redirect_to post_url(@post), success: '作品を更新しました'
     else
       render :edit, status: :unprocessable_entity
@@ -109,5 +73,35 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :description, :image, :image_cache)
+  end
+
+  def filter_post_by_tag
+    if params[:tag_name].present?
+      post_with_tag
+    else
+      @posts = @q.result(distinct: true).order(created_at: :desc).page(params[:page])
+    end
+  end
+
+  def post_with_tag
+    tag_name = params[:tag_name]
+    @posts = Post.with_tag(tag_name).ransack(params[:q]).result(distinct: true).page(params[:page])
+  end
+
+  def set_tags
+    mtags = params[:post][:tag_ids].compact_blank
+    mtags&.each do |mt|
+      post_tag = Tag.find(mt)
+      @post.tags << post_tag
+    end
+  end
+
+  def update_tags
+    mtags = params[:post][:tag_ids].compact_blank
+    @post.tags&.destroy_all
+    mtags&.each do |mt|
+      post_tag = Tag.find(mt)
+      @post.tags << post_tag
+    end
   end
 end

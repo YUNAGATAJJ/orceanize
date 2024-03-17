@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # bookmarksテーブルを作成
 class CreateBookmarks < ActiveRecord::Migration[7.1]
   def change

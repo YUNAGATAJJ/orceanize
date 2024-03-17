@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # sorceryのrequire_loginをデフォルトで有効
 class ApplicationController < ActionController::Base
   before_action :require_login

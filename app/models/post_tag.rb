@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # 1ポストにつき、1種のタグづつ登録できるようバリデーション設定
 class PostTag < ApplicationRecord
   belongs_to :post
