@@ -1,53 +1,86 @@
-<!-- <main class='h-auto'> -->
-  <main class=''>
+<main>
   <!-- イントロ -->
   <div class='bg-blue-400 flex justify-center items-center'>
     <div class='container text-sky-100 text-center px-5'>
       <h1 class='text-4xl font-bold subpixel-antialiased mt-10'>足元から始まる、<br>海ごみ問題。</h1>
-      <p class='text-sm lg:text-base mt-8'>Orceanize(オーシャナイズ)は<br>「海ごみアート」から海ごみ問題にアプローチ。</p>
-      <p class="text-sm lg:text-base mt-5">自分だけの海ごみアートを、<br>世界に向けて公開することができるプラットフォームです。</p>
     </div>
   </div>
   <%= image_tag 'wave.png'%>
   <!-- 本文 -->
   <div class="px-3">
     <div class="container text-center mx-auto">
-      <h1 class="text-3xl mb-5 mt-10">海ごみアートってなに？</h1>
-      <p class="text-sm lg:text-base">不法投棄やポイ捨てされて海にたどり着いたプラスチックごみ。</p>
-      <p class="text-sm lg:text-base mb-3">それらを海洋生物が誤って飲み込んでしまうなど、海洋プラスチックごみの問題が国際的にも大きな課題となっています。</p>
-      <p class="text-sm lg:text-base mb-5">海洋に打ち上げられた海ごみを利用し、アート作品として新たな命を吹き込むという選択肢もあります。</p>
-      <p class="text-sm lg:text-base">作成者の足元に流れ着いているゴミから作成するので、その時に流れ着く海ごみという材料、それを拾い組み立てる人、</p>
-      <p class="text-sm lg:text-base">どちらにも一つとして同じ組み合わせはありません。</p>
-      <br>
-      <p class="text-sm lg:text-base">世界に一つだけの海ごみアートを作ってみませんか？</p>
+      <div class="border-2 rounded-lg border-blue-900 bg-slate-50 mt-6">
+        <p class='text-sm lg:text-lg mt-8'>「海ごみアート」から海ごみ問題にアプローチ。</p>
+        <p class="text-sm lg:text-lg ">自分だけの海ごみアートを、世界に向けて公開することができるプラットフォームです。</p>
+        <br>
+        <p class="text-sm lg:text-xl">世界に一つだけの海ごみアートを作ってみませんか？</p>
+        <div class="flex justify-center space-x-4 my-6">
+          <div>
+            <%= link_to posts_path, class: "inline-block bg-teal-200 text-black py-2 px-4 rounded hover:bg-teal-300" do %>
+              Galleryをのぞいてみる
+            <% end %>
+          </div>
+          <div>
+            <%= link_to new_user_path, class: "inline-block bg-teal-200 text-black py-2 px-4 rounded hover:bg-teal-300" do %>
+              Sign-Upして作品を公開する
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- ロゴ -->
       <div>
         <%= image_tag 'top.png', class: 'm-auto mt-5 h-36 md:h-60' %>
       </div>
     </div>
-    <!-- 作り方 -->
     <div class="container text-center mx-auto mt-10">
-      <h1 class="text-3xl mb-5">どうやって作るの？</h1>
-      <h1 class='border-t border-blue-400 bg-blue-100 text-lg p-1 mb-10'>下処理</h1>
-      <p class="mb-10 text-sm lg:text-base font-bold">【 用意するもの 】: 手袋、トング、ザル、ボウル、食器用洗剤、アルコール消毒液</p>
-      <div class="inline-block text-left text-sm lg:text-base">
-        <p>・海ゴミを拾う際は怪我や破傷風防止のため手袋をするか、トングなどで行うことを推奨します。</p>
-        <p class="mt-2">・家に持ち帰り、ざるとボウルに入れて水と台所洗剤にまる1日浸しておきます。</p>
-        <p class="mt-2">・砂が水道に流れないようにそっと捨てて、水で洗って乾かします。そしてアルコール消毒液で一つ一つふいてきれいにします。</p>
-        <p class="mt-5">これで海ごみの下処理は完了です。</p>
+      <h1 class="text-3xl mb-5">海ごみアートができるまで</h1>
+      <!-- 下準備部分 -->
+      <h1 class='border-t border-blue-400 bg-blue-100 text-lg p-1 mb-3 hover:bg-blue-400 cursor-pointer' id='toggle-preparation1'>下処理</h1>
+      <div class='hidden' id="preparation-content1">
+        <p class="mb-10 text-sm lg:text-base font-bold">【 用意するもの 】: 手袋、トング、ザル、ボウル、食器用洗剤、アルコール消毒液</p>
+        <div class="inline-block text-left text-sm lg:text-base">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-2 mb-2">
+            <div>
+              <p>・海ゴミを拾う際は怪我や破傷風防止のため手袋をするか、トングなどで行うことを推奨します。</p>
+              <%= image_tag 'grove_turtle.png' %>
+            </div>
+            <div>
+              <p>・家に持ち帰り、ざるとボウルに入れて水と台所洗剤にまる1日浸しておきます。</p>
+              <br>
+              <%= image_tag 'wash.png' %>
+            </div>
+            <div>
+              <p>・砂が水道に流れないようにそっと捨てて、水で洗って乾かします。そしてアルコール消毒液で一つ一つふいてきれいにします。</p>
+              <%= image_tag 'dry.png' %>
+            </div>
+          </div>
+          <p class="mt-5">これで海ごみの下処理は完了です。</p>
+          <p class="mt-2 text-orange-600  font-bold">※この海ごみの下処理方法は一例として提供していますが、実施する際は自己責任でお願いします。</p>
+          <p class="text-orange-600  font-bold">万が一、怪我をしたり、何らかの損害が発生したりしても責任を負いかねますのでご了承ください。</p>
+          <div class="text-right text-gray-400 text-xs mt-3 mb-5">
+            <%=link_to '参考: ​木暮奈津子の新聞紙のオブジェ', 'https://www.kame77.com/single-post/%E6%B5%B7%E6%B4%8B%E3%83%97%E3%83%A9%E3%82%B9%E3%83%81%E3%83%83%E3%82%AF%E3%82%B4%E3%83%9F%E3%81%AE%E7%A0%B4%E7%89%87%E3%81%8C%E3%81%82%E3%82%8B%E5%A0%B4%E6%89%80%E3%82%84%E6%8B%BE%E3%81%84%E6%96%B9%E3%81%AA%E3%81%A9', class: 'mt-5'  %>
+          </div>
+        </div>
       </div>
-      <!-- 組み立て方 -->
-      <h1 class='border-t border-blue-400 bg-blue-100 text-lg p-1 mt-5 mb-10'>組み立て</h1>
-      <p class="mb-10 font-bold text-sm lg:text-base">【 用意するもの 】: 手袋、古新聞または古雑誌。ボンド、アルコール消毒をした海ごみ。</p>
-      <div class="inline-block text-left text-sm lg:text-base">
-        <p>・作業場が汚れないように新聞紙敷き、思いのままに組み上げていきます。</p>
-        <p class="mt-2">・キャンバスに組み上げていくのもおすすめです。</p>
-        <p class="mt-2">・100円均一ショップなどで購入できるほか、自作することも可能です。作り方は<%= link_to 'こちらのサイト', 'https://artkaya.com/canvas/', class: 'text-indigo-600 border-b' %>などが参考になるかと思います</p>
-        <br>
-        <p class="text-orange-600 font-bold">※制作中は軍手の着用を推奨いたします。</p>
-        <p class="mt-2 text-orange-600  font-bold">※この海ごみの下処理方法は一例として提供していますが、実施する際は自己責任でお願いします。</p>
-        <p class="text-orange-600  font-bold">万が一、この方法によって怪我をしたり、何らかの損害が発生したりしても責任を負いかねますのでご了承ください。</p>
-        <div class="text-right text-gray-400 text-xs mt-3 mb-5">
-          <%=link_to '参考: ​木暮奈津子の新聞紙のオブジェ', 'https://www.kame77.com/single-post/%E6%B5%B7%E6%B4%8B%E3%83%97%E3%83%A9%E3%82%B9%E3%83%81%E3%83%83%E3%82%AF%E3%82%B4%E3%83%9F%E3%81%AE%E7%A0%B4%E7%89%87%E3%81%8C%E3%81%82%E3%82%8B%E5%A0%B4%E6%89%80%E3%82%84%E6%8B%BE%E3%81%84%E6%96%B9%E3%81%AA%E3%81%A9', class: 'mt-5'  %>
+      <!-- 組み立て部分 -->
+      <h1 class='border-t border-blue-400 bg-blue-100 text-lg p-1 mt-5 mb-10 hover:bg-blue-400 cursor-pointer' id='toggle-preparation2'>組み立て</h1>
+      <div class='hidden' id="preparation-content2">
+        <p class="mb-10 font-bold text-sm lg:text-base">【 用意するもの 】: 手袋、古新聞または古雑誌。ボンド、アルコール消毒をした海ごみ。</p>
+        <div class="inline-block text-left text-sm lg:text-base">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-2 mb-2">
+            <div>
+              <p>・作業場が汚れないように新聞紙を敷き、思いのままに組み上げていきます。</p>
+              <br>
+              <%= image_tag 'assemble.png' %>
+            </div>
+            <div>
+              <p>・キャンバスに組み上げていくのもおすすめです。</p>
+              <%= image_tag 'canvas.png' %>
+            </div>
+          </div>
+          <p class="mt-2">キャンバスは100円均一ショップなどで購入できるほか、自作することも可能です。作り方は<%= link_to 'こちらのサイト', 'https://artkaya.com/canvas/', class: 'text-indigo-600 border-b' %>などが参考になるかと思います</p>
+          <br>
+          <p class="text-orange-600 font-bold mb-5">※制作中は軍手の着用を推奨いたします。</p>
         </div>
       </div>
     </div>
