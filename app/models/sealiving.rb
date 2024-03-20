@@ -2,4 +2,5 @@
 
 # 海の生き物をひたすら突っ込むモデル
 class Sealiving < ApplicationRecord
+  validates :name, presence: true
 end

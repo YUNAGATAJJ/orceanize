@@ -8,7 +8,7 @@ RSpec.describe User, type: :model do
   end
 
   it 'nicknameがない場合に、validationが発動してinvalidになるか' do
-    user_without_nickname = build(:user, nickname: '')
+    user_without_nickname = build(:user, nickname: nil)
     expect(user_without_nickname).to be_invalid
     expect(user_without_nickname.errors[:nickname]).to eq ["can't be blank"]
   end
