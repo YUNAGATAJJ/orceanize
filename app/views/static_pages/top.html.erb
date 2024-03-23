@@ -9,20 +9,20 @@
   <!-- 本文 -->
   <div class="px-3">
     <div class="container text-center mx-auto">
-      <div class="border-2 rounded-lg border-blue-900 bg-slate-50 mt-6">
+      <div class="border-2 rounded-lg border-blue-900 bg-slate-100 mt-6 p-3">
         <p class='text-sm lg:text-lg mt-8'>「海ごみアート」から海ごみ問題にアプローチ。</p>
         <p class="text-sm lg:text-lg ">自分だけの海ごみアートを、世界に向けて公開することができるプラットフォームです。</p>
         <br>
         <p class="text-sm lg:text-xl">世界に一つだけの海ごみアートを作ってみませんか？</p>
         <div class="flex justify-center space-x-4 my-6">
-          <div>
-            <%= link_to posts_path, class: "inline-block bg-teal-200 text-black py-2 px-4 rounded hover:bg-teal-300" do %>
-              Galleryをのぞいてみる
+          <div class="p-3">
+            <%= link_to posts_path, class: "inline-block bg-teal-200 text-black py-2 px-4 rounded-xl hover:bg-teal-300" do %>
+              <p>Galleryを<br>のぞいてみる</p>
             <% end %>
           </div>
-          <div>
-            <%= link_to new_user_path, class: "inline-block bg-teal-200 text-black py-2 px-4 rounded hover:bg-teal-300" do %>
-              Sign-Upして作品を公開する
+          <div class="p-3">
+            <%= link_to new_user_path, class: "inline-block bg-teal-200 text-black py-2 px-4 rounded-xl hover:bg-teal-300" do %>
+            <p>Sign Upして<br>作品を公開する</p>
             <% end %>
           </div>
         </div>
@@ -41,22 +41,22 @@
         <div class="inline-block text-left text-sm lg:text-base">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-2 mb-2">
             <div>
-              <p>・海ゴミを拾う際は怪我や破傷風防止のため手袋をするか、トングなどで行うことを推奨します。</p>
+              <p><i class="fa-solid fa-circle-exclamation"></i> 海ゴミを拾う際は怪我や破傷風防止のため手袋をするか、トングなどで行うことを推奨します。</p>
               <%= image_tag 'grove_turtle.png' %>
             </div>
-            <div>
+            <div class="mt-6">
               <p>・家に持ち帰り、ざるとボウルに入れて水と台所洗剤にまる1日浸しておきます。</p>
               <br>
               <%= image_tag 'wash.png' %>
             </div>
-            <div>
+            <div class="mt-6">
               <p>・砂が水道に流れないようにそっと捨てて、水で洗って乾かします。そしてアルコール消毒液で一つ一つふいてきれいにします。</p>
               <%= image_tag 'dry.png' %>
             </div>
           </div>
           <p class="mt-5">これで海ごみの下処理は完了です。</p>
-          <p class="mt-2 text-orange-600  font-bold">※この海ごみの下処理方法は一例として提供していますが、実施する際は自己責任でお願いします。</p>
-          <p class="text-orange-600  font-bold">万が一、怪我をしたり、何らかの損害が発生したりしても責任を負いかねますのでご了承ください。</p>
+          <p class="mt-2 text-orange-600  font-bold"><i class="fa-solid fa-circle-exclamation"></i>この海ごみの下処理方法は一例として提供していますが、実施する際は自己責任でお願いします。</p>
+          <p class="text-orange-600  font-bold"><i class="fa-solid fa-circle-exclamation"></i>万が一、怪我をしたり、何らかの損害が発生したりしても責任を負いかねますのでご了承ください。</p>
           <div class="text-right text-gray-400 text-xs mt-3 mb-5">
             <%=link_to '参考: ​木暮奈津子の新聞紙のオブジェ', 'https://www.kame77.com/single-post/%E6%B5%B7%E6%B4%8B%E3%83%97%E3%83%A9%E3%82%B9%E3%83%81%E3%83%83%E3%82%AF%E3%82%B4%E3%83%9F%E3%81%AE%E7%A0%B4%E7%89%87%E3%81%8C%E3%81%82%E3%82%8B%E5%A0%B4%E6%89%80%E3%82%84%E6%8B%BE%E3%81%84%E6%96%B9%E3%81%AA%E3%81%A9', class: 'mt-5'  %>
           </div>
@@ -80,7 +80,7 @@
           </div>
           <p class="mt-2">キャンバスは100円均一ショップなどで購入できるほか、自作することも可能です。作り方は<%= link_to 'こちらのサイト', 'https://artkaya.com/canvas/', class: 'text-indigo-600 border-b' %>などが参考になるかと思います</p>
           <br>
-          <p class="text-orange-600 font-bold mb-5">※制作中は軍手の着用を推奨いたします。</p>
+          <p class="text-orange-600 font-bold mb-5"><i class="fa-solid fa-circle-exclamation"></i>制作中は軍手の着用を推奨いたします。</p>
         </div>
       </div>
     </div>
