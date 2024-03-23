@@ -36,5 +36,7 @@
     <% end %>
   </div>
 
-  <%= link_to "◀️", posts_path, class: "mt-10 rounded-lg py-2 px-4 bg-teal-200 text-teal-900 inline-block font-medium hover:bg-teal-300 transition-colors" %>
+  <%= link_to posts_path, class: "mt-10 rounded-lg py-2 px-4 bg-teal-200 text-teal-900 inline-block font-medium hover:bg-teal-300 transition-colors" do %>
+    <i class="fa-solid fa-backward"></i>
+  <% end %>
 </div>

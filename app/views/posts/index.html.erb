@@ -3,7 +3,7 @@
   <!-- 投稿作成ボタン -->
   <% if logged_in? %>
     <div class="absolute top-20 right-10">
-      <%= link_to "+", new_post_path, class: "text-3xl rounded-full py-3 px-5 bg-blue-600 text-white font-medium mb-10" %>
+      <%= link_to "+", new_post_path, class: "text-3xl rounded-full py-3 px-5 bg-blue-600 text-white font-medium " %>
     </div>
   <% end %>
   <% if notice.present? %>

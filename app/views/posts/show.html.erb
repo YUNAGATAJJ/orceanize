@@ -7,12 +7,12 @@
                       description: @post.description,
                       # url: request.original_url,
                       url: 'https://www.orceanize.com/',
-                      image: @post.image_url
+                      # image: @post.image_url
                         },
                     twitter: {
                       card: 'summary_large_image', # Twitterで表示する場合は大きいカードにする
                       site: '@', # アプリの公式Twitterアカウントがあれば、アカウント名を書く
-                      image: @post.image_url # 配置するパスやファイル名によって変更すること
+                      image: image_url('ogp.png') # 配置するパスやファイル名によって変更すること
                     }
   %>
 <% end %>
@@ -27,7 +27,9 @@
     <%= render @post %>
   </div>
   <% if logged_in? && current_user.own?(@post) %>
-      <%= link_to "◀️", posts_path, class: "ml-2 rounded-full py-3 px-5 bg-gray-100 inline-block font-medium mt-10 mr-2" %>
+      <%= link_to  posts_path, class: "ml-2 rounded-full py-3 px-5 bg-gray-100 inline-block font-medium mt-10 mr-2" do %>
+        <i class="fa-solid fa-backward"></i>
+      <% end %>
       <%= link_to edit_post_path(@post), class: "mt-2 py-3 px-5 inline-block font-medium hover:text-blue-500" do %>
         <i class="fa-solid fa-paintbrush"></i>
       <% end %>
@@ -44,6 +46,8 @@
         </div>
       <% end %>
   <% else %>
-      <%= link_to "◀️", posts_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium mt-10" %>
+      <%= link_to posts_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium mt-10" do %>
+        <i class="fa-solid fa-backward"></i>
+      <% end %>
   <% end %>
 </div>
