@@ -1,7 +1,7 @@
 <%= form_with(model: post, class: "contents") do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(post.errors.count, "error") %> 保存できませんでした:</h2>
+      <h2><% pluralize(post.errors.count, "error") %>保存できませんでした</h2>
 
       <ul>
         <% post.errors.each do |error| %>
