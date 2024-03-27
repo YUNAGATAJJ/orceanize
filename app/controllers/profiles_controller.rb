@@ -14,6 +14,8 @@ class ProfilesController < ApplicationController
     if @user.update(profile_params) && params[:user][:avatar]
       upload_avatarimage_to_cloudinary
       redirect_to profile_path, success: 'ユーザ情報が更新されました'
+    elsif @user.update(profile_params)
+      redirect_to profile_path, success: 'ユーザ情報が更新されました'
     else
       render :edit, status: :unprocessable_entity
     end
