@@ -19,7 +19,7 @@ module ApplicationHelper
         description: :description,
         type: 'website',
         # url: request.original_url,
-        url: 'https://www.orceanize.com/',
+        url: 'https://www.orceanize.com',
         image: image_url('ogp.png'), # 配置するパスやファイル名によって変更すること
         local: 'ja-JP'
       },
